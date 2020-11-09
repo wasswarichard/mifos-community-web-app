@@ -1,5 +1,5 @@
 {
-  "name": "mifos-community-web-app",
+  "name": "mifosx-web-app",
   "version": "0.0.0",
   "description": "MifosX Web App is the default web application built on top of the Fineract platform for the Mifos user community leveraging the popular Angular framework.",
   "keywords": [
@@ -11,11 +11,10 @@
   "homepage": "https://github.com/openMF/web-app",
   "license": "MPL-2.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "build": "npm run env -s && ng build --prod --output-hashing=none",
     "build:prod": "node --max-old-space-size=16384 ./node_modules/@angular/cli/bin/ng build --prod --output-hashing=none --base-href=\"/web-app/\"",
-    "start": "node server.js",
+    "start": "npm run env -s && ng serve --aot --proxy-config proxy.conf.js",
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "test": "npm run env -s && ng test",
@@ -48,9 +47,13 @@
     "@fortawesome/fontawesome-svg-core": "1.2.18",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@ngx-translate/core": "11.0.1",
+    "body-parser": "^1.19.0",
     "chart.js": "3.0.0-alpha",
     "core-js": "2.5.0",
+    "ecstatic": "^4.1.4",
     "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "http-server": "^0.12.3",
     "lodash": "4.17.19",
     "path": "^0.12.7",
     "rxjs": "6.6.2",
