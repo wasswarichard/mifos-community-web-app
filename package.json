@@ -1,5 +1,5 @@
 {
-  "name": "mifosx-web-app",
+  "name": "mifos-community-web-app",
   "version": "0.0.0",
   "description": "MifosX Web App is the default web application built on top of the Fineract platform for the Mifos user community leveraging the popular Angular framework.",
   "keywords": [
@@ -11,10 +11,11 @@
   "homepage": "https://github.com/openMF/web-app",
   "license": "MPL-2.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "build": "npm run env -s && ng build --prod --output-hashing=none",
     "build:prod": "node --max-old-space-size=16384 ./node_modules/@angular/cli/bin/ng build --prod --output-hashing=none --base-href=\"/web-app/\"",
-    "start": "npm run env -s && ng serve --aot --proxy-config proxy.conf.js",
+    "start": "node server.js",
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "test": "npm run env -s && ng test",
@@ -28,8 +29,10 @@
   "dependencies": {
     "@angular/animations": "9.1.12",
     "@angular/cdk": "9.2.4",
+    "@angular/cli": "9.1.12",
     "@angular/common": "9.1.12",
     "@angular/compiler": "9.1.12",
+    "@angular/compiler-cli": "9.1.12",
     "@angular/core": "9.1.12",
     "@angular/flex-layout": "9.0.0-beta.31",
     "@angular/forms": "9.1.12",
@@ -47,9 +50,12 @@
     "@ngx-translate/core": "11.0.1",
     "chart.js": "3.0.0-alpha",
     "core-js": "2.5.0",
+    "express": "^4.17.1",
     "lodash": "4.17.19",
+    "path": "^0.12.7",
     "rxjs": "6.6.2",
     "tslib": "1.10.0",
+    "typescript": "3.8.3",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
